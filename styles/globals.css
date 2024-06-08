@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Pagination Styles */
+.rc-pagination {
+  @apply m-0 p-0 text-lg;
+}
+
+.rc-pagination-total-text {
+  @apply inline-block h-8 mr-2 leading-8 align-middle mr-auto min-w-[16.5rem];
+}
+
+.rc-pagination-item {
+  @apply inline-block min-w-[2rem] h-8 mr-2 leading-8 text-center align-middle list-none bg-white outline-none cursor-pointer;
+
+  a {
+    @apply block transition-none;
+
+    &:hover {
+      @apply no-underline;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    @apply transition-all duration-300;
+
+    a {
+      @apply text-neutral-600;
+    }
+  }
+
+  &-active {
+    @apply font-medium bg-white;
+
+    a {
+      @apply text-neutral-600;
+    }
+
+    &:focus,
+    &:hover {
+      @apply border-neutral-600;
+
+      a {
+        @apply text-neutral-600;
+      }
+    }
+  }
+}
+
+.rc-pagination-jump-prev,
+.rc-pagination-jump-next {
+  @apply outline-none;
+
+  button {
+    @apply bg-transparent border-none cursor-pointer text-gray-600;
+  }
+
+  button:after {
+    @apply block content-['...'] text-lg leading-[2.8rem];
+  }
+}
+
+.rc-pagination-prev,
+.rc-pagination-next {
+  @apply outline-none inline-block min-w-[2rem] h-8 leading-8 text-center align-middle list-none rounded-md cursor-pointer transition-all duration-300;
+
+  button {
+    @apply text-black cursor-pointer;
+  }
+
+  &:hover button {
+    @apply border-blue-400;
+  }
+
+  .rc-pagination-item-link {
+    @apply block w-full h-full text-xs text-center bg-white border border-neutral-400 rounded-md outline-none transition-all duration-300;
+  }
+}
+
+.rc-pagination-prev button:after {
+  @apply block content-['‹'];
+}
+
+.rc-pagination-next button:after {
+  @apply block content-['›'];
+}
+
+.rc-pagination-disabled {
+  @apply cursor-not-allowed;
+
+  .rc-pagination-item-link {
+    @apply text-neutral-400 border-neutral-400 cursor-not-allowed;
+  }
+}
+
+.rc-pagination-slash {
+  @apply mx-2.5;
+}
+
+.rc-pagination-options {
+  @apply inline-block ml-4 align-middle ml-auto min-w-[16.5rem];
+
+  .rc-select {
+    @apply inline-block w-auto mr-2;
+  }
+
+  .rc-pagination-quick-jumper {
+    @apply inline-block h-7 leading-7 align-top;
+
+    input {
+      @apply w-12 mx-2 p-0 text-center bg-white border border-neutral-400 rounded-md outline-none duration-300;
+
+      &:hover {
+        @apply border-blue-400;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .rc-pagination-item-after-jump-prev,
+  .rc-pagination-item-before-jump-next {
+    @apply hidden;
+  }
+}
+
+@media (max-width: 576px) {
+  .rc-pagination-options {
+    @apply hidden;
+  }
+}
