@@ -15,7 +15,6 @@ const DeleteTruck: React.FC<DeleteTruckProps> = ({
   setShowModal,
   truck,
 }) => {
-  console.log("tr", truck);
   const [
     deleteTruck,
     {

@@ -7,6 +7,7 @@ import EditTrack from "./EditTrack";
 import AddTrack from "./AddTrack";
 import { TruckData } from "@/types/trucks/truckData";
 import DeleteTruck from "./DeleteTruck";
+import { TruckStatus, TruckStatusLabels } from "@/types/trucks/truckStatus";
 
 const TrucksList = () => {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -42,35 +43,30 @@ const TrucksList = () => {
       cell: (info) => {
         return info.getValue() || 0;
       },
-      size: 160,
     }),
     columnHelper.accessor("code", {
       header: "Code",
       cell: (info) => {
         return info.getValue() || "-";
       },
-      size: 160,
     }),
     columnHelper.accessor("name", {
       header: "Name",
       cell: (info) => {
         return info.getValue() || "-";
       },
-      size: 170,
     }),
     columnHelper.accessor("status", {
       header: "Status",
       cell: (info) => {
-        return info.getValue() || "-";
+        return TruckStatusLabels[info.getValue() as TruckStatus] || "-";
       },
-      size: 125,
     }),
     columnHelper.accessor("description", {
       header: "Description",
       cell: (info) => {
         return info.getValue() || "-";
       },
-      size: 300,
     }),
     columnHelper.display({
       id: "actions",
