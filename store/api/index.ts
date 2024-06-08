@@ -18,6 +18,7 @@ export const {
   useGetTrucksQuery,
   useUpdateTruckMutation,
   useAddTruckMutation,
+  useDeleteTruckMutation,
 } = connectionAPI;
 
 export { connectionAPI };

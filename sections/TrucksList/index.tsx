@@ -6,9 +6,13 @@ import React, { useState } from "react";
 import EditTrack from "./EditTrack";
 import AddTrack from "./AddTrack";
 import { TruckData } from "@/types/trucks/truckData";
+import DeleteTruck from "./DeleteTruck";
 
 const TrucksList = () => {
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedTruck, setSelectedTruck] = useState<TruckData | null>(null);
+  const [deleteTruck, setDeleteTruck] = useState<TruckData>();
   const [currentPage, setCurrentPage] = useState(1);
   const {
     data: trucks,
@@ -19,7 +23,6 @@ const TrucksList = () => {
     page: currentPage,
     limit: 5,
   });
-  const [selectedTruck, setSelectedTruck] = useState<TruckData | null>(null);
 
   const columnHelper = createColumnHelper<TruckData>();
 
@@ -27,8 +30,10 @@ const TrucksList = () => {
     setSelectedTruck(truck);
   };
 
-  const handleDelete = (id?: number) => {
-    console.log("delete", id);
+  const handleDelete = (truck: TruckData) => {
+    console.log("delete", truck);
+    setDeleteTruck(truck);
+    setShowDeleteModal(true);
   };
 
   const columns: ColumnDef<TruckData, any>[] = [
@@ -77,7 +82,7 @@ const TrucksList = () => {
             <Button variant="warning" onClick={() => handleEdit(row.original)}>
               Edit
             </Button>
-            <Button variant="danger" onClick={() => handleDelete(id)}>
+            <Button variant="danger" onClick={() => handleDelete(row.original)}>
               Delete
             </Button>
           </div>
@@ -111,6 +116,11 @@ const TrucksList = () => {
       <EditTrack
         selectedTruck={selectedTruck}
         setSelectedTruck={setSelectedTruck}
+      />
+      <DeleteTruck
+        showModal={showDeleteModal}
+        setShowModal={setShowDeleteModal}
+        truck={deleteTruck}
       />
     </div>
   );

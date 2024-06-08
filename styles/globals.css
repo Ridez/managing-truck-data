@@ -39,7 +39,7 @@
     @apply font-medium bg-white;
 
     a {
-      @apply text-neutral-600;
+      font-weight: 600;
     }
 
     &:focus,
