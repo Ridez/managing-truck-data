@@ -6,7 +6,7 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 import CustomPagination from "./CustomPagination";
-import Loader from "@/components/Loader";
+import Loader from "./icons/Loader";
 
 type TableProps<TData> = {
   columns: ColumnDef<TData>[];
@@ -41,8 +41,6 @@ const Table = <TData extends object>({
     manualSorting: true,
     manualPagination,
   });
-
-  console.log("data", data);
 
   return (
     <div className="overflow-scroll">
