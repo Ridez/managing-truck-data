@@ -44,7 +44,7 @@ const Table = <TData extends object>({
 
   return (
     <div className="overflow-scroll">
-      <table className="my-auto border size-full">
+      <table className="my-auto border size-full min-h-[480px]">
         <thead className="">
           {table.getHeaderGroups().map((headerGroup, headerGroupIdx) => (
             <tr
@@ -77,8 +77,8 @@ const Table = <TData extends object>({
           {isLoading ? (
             <tr className="border-b">
               <td colSpan={columns.length} className="">
-                <div className="">
-                  <Loader />
+                <div>
+                  <Loader className="ml-auto mr-auto" />
                 </div>
               </td>
             </tr>
