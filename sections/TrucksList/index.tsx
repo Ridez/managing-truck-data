@@ -3,8 +3,8 @@ import Table from "@/components/Table";
 import { useGetTrucksQuery } from "@/store/api";
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
 import React, { useState } from "react";
-import EditTrack from "./EditTrack";
-import AddTrack from "./AddTrack";
+import EditTruck from "./EditTruck";
+import AddTruck from "./AddTruck";
 import { TruckData } from "@/types/trucks/truckData";
 import DeleteTruck from "./DeleteTruck";
 import { TruckStatus, TruckStatusLabels } from "@/types/trucks/truckStatus";
@@ -107,8 +107,8 @@ const TrucksList = () => {
         setCurrentPage={setCurrentPage}
         totalSize={trucks?.total}
       />
-      <AddTrack showModal={showAddModal} setShowModal={setShowAddModal} />
-      <EditTrack
+      <AddTruck showModal={showAddModal} setShowModal={setShowAddModal} />
+      <EditTruck
         selectedTruck={selectedTruck}
         setSelectedTruck={setSelectedTruck}
       />

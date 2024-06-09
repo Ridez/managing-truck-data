@@ -8,7 +8,7 @@ interface EditTruckProps {
   setSelectedTruck: (truck?: TruckData) => void;
 }
 
-const EditTrack: React.FC<EditTruckProps> = ({
+const EditTruck: React.FC<EditTruckProps> = ({
   selectedTruck,
   setSelectedTruck,
 }) => {
@@ -32,4 +32,4 @@ const EditTrack: React.FC<EditTruckProps> = ({
   );
 };
 
-export default EditTrack;
+export default EditTruck;

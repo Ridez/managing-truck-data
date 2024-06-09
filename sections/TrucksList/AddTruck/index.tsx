@@ -7,7 +7,7 @@ interface AddTrackProps {
   setShowModal: (show: boolean) => void;
 }
 
-const AddTrack: React.FC<AddTrackProps> = ({ showModal, setShowModal }) => {
+const AddTruck: React.FC<AddTrackProps> = ({ showModal, setShowModal }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -24,4 +24,4 @@ const AddTrack: React.FC<AddTrackProps> = ({ showModal, setShowModal }) => {
   );
 };
 
-export default AddTrack;
+export default AddTruck;
