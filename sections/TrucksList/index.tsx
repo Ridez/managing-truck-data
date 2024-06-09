@@ -116,6 +116,7 @@ const TrucksList = () => {
         showModal={showDeleteModal}
         setShowModal={setShowDeleteModal}
         truck={deleteTruck}
+        setDeleteTruck={setDeleteTruck}
       />
     </div>
   );

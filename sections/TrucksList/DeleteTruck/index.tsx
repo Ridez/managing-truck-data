@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "@/components/Modal";
 import Button from "@/components/Button";
 import { useDeleteTruckMutation } from "@/store/api";
@@ -8,12 +8,14 @@ interface DeleteTruckProps {
   showModal: boolean;
   setShowModal: (show: boolean) => void;
   truck?: TruckData;
+  setDeleteTruck: (truck?: TruckData) => void;
 }
 
 const DeleteTruck: React.FC<DeleteTruckProps> = ({
   showModal,
   setShowModal,
   truck,
+  setDeleteTruck,
 }) => {
   const [
     deleteTruck,
@@ -21,15 +23,20 @@ const DeleteTruck: React.FC<DeleteTruckProps> = ({
       isError: isErrorDeleteTruck,
       isSuccess: isSuccessDeleteTruck,
       isLoading: isLoadingDeleteTruck,
+      reset: resetDeleteTruckState,
     },
   ] = useDeleteTruckMutation();
 
   const handleCloseModal = () => {
     setShowModal(false);
+    resetDeleteTruckState();
+    setDeleteTruck(undefined);
   };
 
   const handleDelete = () => {
-    deleteTruck({ id: truck?.id });
+    if (truck?.id) {
+      deleteTruck({ id: truck.id });
+    }
   };
 
   return (
@@ -59,7 +66,7 @@ const DeleteTruck: React.FC<DeleteTruckProps> = ({
           )}
           {isSuccessDeleteTruck && (
             <>
-              <p>The "{truck?.name}" truck successfuly deleted.</p>
+              <p>The "{truck?.name}" truck successfully deleted.</p>
               <div className="block mt-4">
                 <Button variant="primary" onClick={handleCloseModal}>
                   Ok
