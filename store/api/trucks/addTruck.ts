@@ -1,5 +1,7 @@
+import { TruckData } from "@/types/trucks/truckData";
+
 export const addTruck = {
-  query: ({ requestBody }: { id: number; requestBody: any }) => {
+  query: ({ requestBody }: { id: number; requestBody: TruckData }) => {
     return {
       url: `/trucks`,
       method: "POST",

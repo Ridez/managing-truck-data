@@ -11,9 +11,9 @@ interface InputProps {
   disabled?: boolean;
   optional?: boolean;
   label?: string;
-  value?: any;
+  value?: string;
   id: string;
-  ref?: any;
+  ref?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(

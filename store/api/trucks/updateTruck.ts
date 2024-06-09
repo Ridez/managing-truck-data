@@ -1,5 +1,7 @@
+import { TruckData } from "@/types/trucks/truckData";
+
 export const updateTruck = {
-  query: ({ id, requestBody }: { id: number; requestBody: any }) => {
+  query: ({ id, requestBody }: { id: number; requestBody: TruckData }) => {
     return {
       url: `/trucks/${id}`,
       method: "PUT",
