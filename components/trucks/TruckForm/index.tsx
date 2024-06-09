@@ -27,8 +27,8 @@ const TruckForm: React.FC<TruckFormProps> = ({
     },
   });
 
-  const [initialStatus, setInitialStatus] = useState<TruckStatus>(
-    initialData?.status || TruckStatus.LOADING
+  const [initialStatus, setInitialStatus] = useState<TruckStatus | undefined>(
+    initialData?.status
   );
 
   const [

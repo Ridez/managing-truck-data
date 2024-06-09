@@ -3,7 +3,7 @@ import React from "react";
 
 interface CustomSelectProps {
   value: TruckStatus;
-  initialStatus: TruckStatus;
+  initialStatus?: TruckStatus;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -18,6 +18,8 @@ const StatusSelect: React.FC<CustomSelectProps> = ({
     // If no initialStatus or the current status is "OUT_OF_SERVICE", allow all options
     if (!initialStatus || initialStatus === TruckStatus.OUT_OF_SERVICE)
       return false;
+    // Allow selecting "OUT_OF_SERVICE" regardless of the current status
+    if (option === TruckStatus.OUT_OF_SERVICE) return false;
     // Allow selecting the current value or the initial value
     if (option === value || option === initialStatus) return false;
 
