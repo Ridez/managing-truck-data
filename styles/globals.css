@@ -123,6 +123,10 @@
   }
 }
 
+.rc-pagination-item-active a {
+  font-weight: 900;
+}
+
 @media (max-width: 992px) {
   .rc-pagination-item-after-jump-prev,
   .rc-pagination-item-before-jump-next {
