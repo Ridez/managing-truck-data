@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ERP Application Module - Trucks Management
 
-## Getting Started
+This module is part of the first section of the ERP application, designed to manage trucks. The application is built with scalability in mind, allowing for additional modules in the future to manage various resources such as employees, factories, and customers.
 
-First, run the development server:
+## Quick start
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Create `.env` file in root directory: 
+   ```sh
+   NEXT_PUBLIC_MANAGING_TRUCKS_API_URL=http://qa-api-mock-3.eu-central-1.elasticbeanstalk.com
+2. Install dependencies:
+   ```sh
+   npm install
+3. Start the development server:
+   ```sh
+   npm run dev
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Trucks Management module allows users to perform CRUD (Create, Read, Update, Delete) operations on trucks. Each truck has the following attributes and constraints:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Unique Alphanumeric Code**: Each truck must have a unique code consisting of alphanumeric characters.
+- **Name**: Each truck must have a name.
+- **Status**: Each truck must have a status that is one of the following:
+  - **Out Of Service**
+  - **Loading**
+  - **To Job**
+  - **At Job**
+  - **Returning**
+- **Description** (optional): Each truck may have a description.
 
-## Learn More
+### Status Transition Rules
 
-To learn more about Next.js, take a look at the following resources:
+The status of a truck can be managed according to the following rules:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Out Of Service**:
+   - Can be set regardless of the current status of the truck.
+   - If the current status is "Out Of Service", any status can be set.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. **Loading -> To Job -> At Job -> Returning**:
+   - These statuses can only be changed in the specified order.
+   - When a truck has the "Returning" status, it can be set to "Loading" again.
 
-## Deploy on Vercel
+## Endpoints
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The module provides the following endpoints for managing trucks:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Get Trucks**: Fetch a list of trucks.
+- **Add Truck**: Add a new truck.
+- **Update Truck**: Update the details of an existing truck.
+- **Delete Truck**: Remove a truck.
+
+## Technologies Used
+
+- **React**: For building the user interface.
+- **Redux Toolkit**: For state management and API requests.
+- **React Hook Form**: For managing form state and validation.
+- **TypeScript**: For type safety and code quality.
+
+
+
