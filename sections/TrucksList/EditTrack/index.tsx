@@ -1,18 +1,19 @@
 import React from "react";
 import Modal from "@/components/Modal";
 import TruckForm from "@/components/trucks/TruckForm";
+import { TruckData } from "@/types/trucks/truckData";
 
-interface EditTrackProps {
-  selectedTruck: any;
-  setSelectedTruck: (truck: any) => void;
+interface EditTruckProps {
+  selectedTruck?: TruckData;
+  setSelectedTruck: (truck?: TruckData) => void;
 }
 
-const EditTrack: React.FC<EditTrackProps> = ({
+const EditTrack: React.FC<EditTruckProps> = ({
   selectedTruck,
   setSelectedTruck,
 }) => {
   const handleCloseModal = () => {
-    setSelectedTruck(null);
+    setSelectedTruck(undefined);
   };
 
   return (

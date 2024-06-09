@@ -12,7 +12,7 @@ import { TruckStatus, TruckStatusLabels } from "@/types/trucks/truckStatus";
 const TrucksList = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [selectedTruck, setSelectedTruck] = useState<TruckData | null>(null);
+  const [selectedTruck, setSelectedTruck] = useState<TruckData>();
   const [deleteTruck, setDeleteTruck] = useState<TruckData>();
   const [currentPage, setCurrentPage] = useState(1);
   const {
@@ -32,7 +32,6 @@ const TrucksList = () => {
   };
 
   const handleDelete = (truck: TruckData) => {
-    console.log("delete", truck);
     setDeleteTruck(truck);
     setShowDeleteModal(true);
   };
